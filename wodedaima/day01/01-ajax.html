@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" value="ajax初体验" id="btn">
+</body>
+<script>
+/*
+  ajax  什么是ajax
+     Asynchronous Javascript And XML
+     异步数据交互技术
+  异步的概念
+    同步 - 一个人，做完一件事情，继续做下一件事情
+    异步 - 找一个人，把这件事情派给他去做，不用管别人是什么时候把事情做完的
+
+  以前想要做和服务器的数据交互，是同步的，是会把页面卡住或者是刷新也页面的，对用户是不友好的。该现象直到2004年，google公司，提出了一个新技术： ajax
+
+  希望页面在把数据交给服务器的时候，用户仍然可以浏览网页，不影响用户的任何操作
+
+  这个东西怎么用？
+    一共分4步
+      1. 创建异步对象
+      2. 告诉他去哪里获取或者提交数据、怎么去
+      3. 把他派出去
+      4. 监听办事的进度
+*/
+
+var btn = document.querySelector('#btn');
+btn.onclick = function(){
+  // 1 创建异步对象
+  var xhr = new XMLHttpRequest();
+  // 2 告诉他去哪里获取数据
+  // xhr.open(请求方式,请求的地址);
+  xhr.open('get','http://127.0.0.1:8080/talkToServer');
+  // 3 把他派出去
+  xhr.send();
+  // 4 时刻关注办事的进度
+  xhr.onreadystatechange = function(){
+    // 关注最终的状态
+    // 200 是响应状态码 
+    // 4 是请求完成响应回到浏览器，并且把响应报文解析完毕的状态
+    if(xhr.readyState == 4 && xhr.status == 200){
+      // 会把最终解析出来的响应报文体里面的内容，存到一个属性里面： responseText
+      console.log(xhr.responseText);
+    }
+  }
+}
+
+</script>
+</html>
