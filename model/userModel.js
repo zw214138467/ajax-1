@@ -25,7 +25,6 @@ const userModel = {
     },
     
     doLogin(userName,callback){
-        console.log(userName);
         let sql = 'select * from user where name = ?';
         connection.query(sql,[userName],(err,result)=>{
             callback(err,result[0])
