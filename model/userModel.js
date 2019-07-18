@@ -4,7 +4,7 @@ const connection = mysql.createConnection(sqlhelper.connectionConfig);
 
 const userModel = {
     isUserNameExist(userName,callback){
-        let sql = 'select count(*) as count from user where userName = ?'
+        let sql = 'select count(*) as count from user where name = ?'
         connection.query(sql,[userName],(err,results,fields)=>{
             if(err){
                 callback(err)
