@@ -23,9 +23,13 @@ var btn = document.querySelector('#btn');
 btn.onclick = function(){
   // 希望使用ajax实现点击一下，多一条的效果
   var xhr = new XMLHttpRequest();
+  console.log(xhr.readyState);
   xhr.open('get','http://127.0.0.1:8080/getRandomJocke');
+  console.log(xhr.readyState);
   xhr.send();
+  console.log(xhr.readyState);
   xhr.onreadystatechange = function(){
+    console.log(xhr.readyState);
     if(xhr.status == 200 && xhr.readyState == 4){
       // console.log(xhr.responseText);
       // 创建li，插入到ul里面

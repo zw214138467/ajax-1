@@ -4,7 +4,7 @@ const sqlhelper = {
         port : 3306,
         user : 'root',
         password : 'root',
-        database : 'ajax33'
+        database : 'ajax'
     }
 }
 module.exports = sqlhelper;

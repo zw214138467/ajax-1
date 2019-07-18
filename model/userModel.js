@@ -4,7 +4,7 @@ const connection = mysql.createConnection(sqlhelper.connectionConfig);
 
 const userModel = {
     isUserNameExist(userName,callback){
-        let sql = 'select count(*) as count from users where userName = ?'
+        let sql = 'select count(*) as count from user where userName = ?'
         connection.query(sql,[userName],(err,results,fields)=>{
             if(err){
                 callback(err)
@@ -12,8 +12,9 @@ const userModel = {
             callback(null,results[0]);
         })
     },
+
     doRegister(userData,callback){
-        let sql = 'insert into users set ?';
+        let sql = 'insert into user set ?';
         connection.query(sql,userData,(err,result,fields)=>{
             if(err){
                 callback(err);
@@ -22,8 +23,10 @@ const userModel = {
             }
         })
     },
+    
     doLogin(userName,callback){
-        let sql = 'select * from users where userName = ?';
+        console.log(userName);
+        let sql = 'select * from user where name = ?';
         connection.query(sql,[userName],(err,result)=>{
             callback(err,result[0])
         })

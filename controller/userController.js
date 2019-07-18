@@ -46,8 +46,8 @@ const userController = {
         })        
     },
     doRegister(req,res){
-        let { userName,password,phone } = req.body;
-        userModel.doRegister({userName,password,phone},(err,result)=>{
+        let { userName,password } = req.body;
+        userModel.doRegister({userName,password},(err,result)=>{
             let response;
             if(err){
                 response = {
@@ -69,8 +69,8 @@ const userController = {
         })
     },
     doLogin(req,res){
-        let userName = req.body.userName;
-        let password = req.body.password;
+        let userName = req.body.name;
+        let password = req.body.pwd;
 
         userModel.doLogin(userName,(err,result)=>{
             let response;
@@ -85,7 +85,7 @@ const userController = {
                     code : 401,
                     msg : '用户名错误'
                 }
-            }else if(result.password != password){
+            }else if(result.pwd != password){
                 response = {
                     code : 401,
                     msg : '密码错误'
@@ -120,6 +120,7 @@ const userController = {
                 msg : '用户没有登录或者token已经过期'
             }
         }
+        
         res.send(response);
     }
 };

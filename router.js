@@ -3,6 +3,8 @@ const router = express.Router();
 const userController = require('./controller/userController');
 const heroController = require('./controller/heroController');
 const fileController = require('./controller/fileController');
+// 新增
+const articleController = require('./controller/articleController');
 
 router.get('/',(req,res)=>{ res.redirect(301,'./views/staticlist.html') })
 .get('/talkToServer',(req,res)=>{ res.send('服务器正常开启中...'); })
@@ -20,6 +22,7 @@ router.get('/',(req,res)=>{ res.redirect(301,'./views/staticlist.html') })
 .get('/deleteHeroById',heroController.deleteHeroById)
 .get('/getJson',fileController.getJson)
 .get('/getRandomJocke',fileController.getRandomJocke)
-
+.get('/getArticle',articleController.getArticle)
+.get('/getSearchArticle',articleController.getSearchArticle)
 
 module.exports = router;
