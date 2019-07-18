@@ -25,9 +25,9 @@ const userController = {
         });
     },
     isUserNameExist(req,res){
-        let userName = req.query.userName;
+        let userName = req.query.name;
         
-        userModel.isUserNameExist(userName,(err,result)=>{
+        userModel.isUserNameExist(name,(err,result)=>{
             let response = {
                 code : 0,
                 msg : ''
@@ -46,8 +46,8 @@ const userController = {
         })        
     },
     doRegister(req,res){
-        let { userName,password } = req.body;
-        userModel.doRegister({userName,password},(err,result)=>{
+        let { name,pwd } = req.body;
+        userModel.doRegister({name,pwd},(err,result)=>{
             let response;
             if(err){
                 response = {
