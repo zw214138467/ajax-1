@@ -27,7 +27,7 @@ const userController = {
     isUserNameExist(req,res){
         let userName = req.query.name;
         
-        userModel.isUserNameExist(name,(err,result)=>{
+        userModel.isUserNameExist(userName,(err,result)=>{
             let response = {
                 code : 0,
                 msg : ''
